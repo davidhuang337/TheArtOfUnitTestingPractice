@@ -20,5 +20,28 @@ namespace TheArtOfUnitTestingPractice.UnitTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void IsValidFileName_GoodExtensionLowercase_ReturnTrue()
+        {
+            LogAnalyzer logAnalyzer = new LogAnalyzer();
+
+            var actual = logAnalyzer.IsValidLogFileName("fileWithGoodExtension.slf");
+
+            Assert.IsTrue(actual);
+        }
+
+        [TestMethod]
+        public void IsValidFileName_GoodExtensionUppercase_ReturnTrue()
+        {
+            LogAnalyzer logAnalyzer = new LogAnalyzer();
+
+            var actual = logAnalyzer.IsValidLogFileName("fileWithGoodExtension.SLF");
+
+            Assert.IsTrue(actual);
+        }
+
+
+
     }
 }
