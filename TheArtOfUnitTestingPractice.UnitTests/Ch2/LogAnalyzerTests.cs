@@ -7,39 +7,33 @@ namespace TheArtOfUnitTestingPractice.UnitTests
     [TestClass]
     public class LogAnalyzerTests
     {
-        [TestMethod]
-        public void IsValidFileName_BadExtension_ReturnFalse()
+        private LogAnalyzer _logAnalyzer;
+
+        [TestInitialize]
+        public void SetUp()
         {
-            //Arrange
-            LogAnalyzer logAnalyzer = new LogAnalyzer();
-            bool expected = false;
-
-            //Act
-            var actual = logAnalyzer.IsValidLogFileName("BadExtesion.foo");
-
-            //Assert
-            Assert.AreEqual(expected, actual);
+            _logAnalyzer = new LogAnalyzer();
         }
 
         [TestMethod]
-        public void IsValidFileName_GoodExtensionLowercase_ReturnTrue()
+        [DataRow("BadExtesion.foo")]
+        public void IsValidFileName_BadExtension_ReturnFalse(string fileName)
         {
-            LogAnalyzer logAnalyzer = new LogAnalyzer();
+            var actual = _logAnalyzer.IsValidLogFileName(fileName);
 
-            var actual = logAnalyzer.IsValidLogFileName("fileWithGoodExtension.slf");
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        [DataRow("fileWithGoodExtension.slf")]
+        [DataRow("fileWithGoodExtension.SLF")]
+        public void IsValidFileName_GoodExtension_ReturnTrue(string fileName)
+        {
+            var actual = _logAnalyzer.IsValidLogFileName(fileName);
 
             Assert.IsTrue(actual);
         }
 
-        [TestMethod]
-        public void IsValidFileName_GoodExtensionUppercase_ReturnTrue()
-        {
-            LogAnalyzer logAnalyzer = new LogAnalyzer();
-
-            var actual = logAnalyzer.IsValidLogFileName("fileWithGoodExtension.SLF");
-
-            Assert.IsTrue(actual);
-        }
 
 
 
