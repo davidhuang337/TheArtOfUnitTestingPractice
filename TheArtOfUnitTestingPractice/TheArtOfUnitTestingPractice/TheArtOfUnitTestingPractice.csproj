@@ -47,10 +47,12 @@
     <Compile Include="Ch1\SimpleParser.cs" />
     <Compile Include="Ch1\SimpleParseTests.cs" />
     <Compile Include="Ch1\TestUtil.cs" />
+    <Compile Include="Ch2\LogAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
