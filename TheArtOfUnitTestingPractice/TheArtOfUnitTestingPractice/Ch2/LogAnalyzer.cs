@@ -10,6 +10,10 @@ namespace TheArtOfUnitTestingPractice.Ch2
     {
         public bool IsValidLogFileName(string fileName)
         {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentException("file name has to be provide.");
+            }
             if (!fileName.EndsWith(".SLF",StringComparison.CurrentCultureIgnoreCase))
             {
                 return false;

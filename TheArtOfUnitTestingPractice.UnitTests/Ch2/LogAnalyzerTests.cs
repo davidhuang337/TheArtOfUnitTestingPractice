@@ -34,7 +34,14 @@ namespace TheArtOfUnitTestingPractice.UnitTests
             Assert.IsTrue(actual);
         }
 
+        [TestMethod]
+        public void IsValidFileName_EmptyFileName_Throws()
+        {
+            Action action = () => _logAnalyzer.IsValidLogFileName(string.Empty);
 
+            Assert.ThrowsException<ArgumentException>(action);
+
+        }
 
 
     }
